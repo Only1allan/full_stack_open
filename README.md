@@ -1,2 +1,2 @@
 Full Stack Open Course
-https://fullstackopen.com/
+https://fullstackopen.com/en
