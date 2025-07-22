@@ -133,3 +133,151 @@ const Content = ... {
   )
 }
 ```
+
+# Exercises 1.3–1.5
+
+We continue building the application that we started working on in the previous exercises. You can write the code into the **same project**, since we are only interested in the **final state** of the submitted application.
+
+---
+
+## 💡 Pro Tip: Debugging Props
+
+You may run into issues with the structure of the props that components receive. A good way to make things clearer is by **printing the props to the console**, like this:
+
+```jsx
+const Header = (props) => {
+  console.log(props)
+  return <h1>{props.course}</h1>
+}
+```
+
+If and when you encounter the error:
+
+> **Objects are not valid as a React child**
+
+Keep in mind what is being passed as props and how you're trying to render it.
+
+---
+
+## 🧱 1.3: Course Information, Step 3
+
+Let’s move forward by using **objects** in our application.
+
+Modify the variable definitions in the `App` component and **refactor the rest of the app** so that it still works:
+
+```jsx
+const App = () => {
+  const course = 'Half Stack application development'
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+---
+
+## 📚 1.4: Course Information, Step 4
+
+Place the objects into an **array**.
+
+Update your variable definitions and **modify your component props accordingly**:
+
+```jsx
+const App = () => {
+  const course = 'Half Stack application development'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+> 📝 You can assume there are always three items. No need for loops yet—we’ll explore that in the next part of the course.
+
+Also, instead of passing different objects as separate props to `Content` and `Total`, pass the **whole array**:
+
+```jsx
+const App = () => {
+  // const definitions
+
+  return (
+    <div>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
+    </div>
+  )
+}
+```
+
+---
+
+## 📦 1.5: Course Information, Step 5
+
+Take it one step further—**combine course and parts into a single object**:
+
+```jsx
+const App = () => {
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+
+  return (
+    <div>
+      ...
+    </div>
+  )
+}
+```
+
+> 🧰 Fix anything that breaks as a result of this change. Your components will need to access `course.name` and `course.parts`.
+
+---
+
+Happy coding! 🚀
+```
